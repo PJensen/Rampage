@@ -29,10 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.listBoxPortfolioItems = new System.Windows.Forms.ListBox();
             this.propertyGridPortfolio = new System.Windows.Forms.PropertyGrid();
+            this.tabControlPortfolioView = new System.Windows.Forms.TabControl();
+            this.tabPageOverview = new System.Windows.Forms.TabPage();
+            this.chartOverview = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -42,6 +47,9 @@
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tabControlPortfolioView.SuspendLayout();
+            this.tabPageOverview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartOverview)).BeginInit();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +65,7 @@
             // 
             // splitContainerMain.Panel2
             // 
+            this.splitContainerMain.Panel2.Controls.Add(this.tabControlPortfolioView);
             this.splitContainerMain.Panel2.Controls.Add(this.statusStrip);
             this.splitContainerMain.Size = new System.Drawing.Size(619, 411);
             this.splitContainerMain.SplitterDistance = 135;
@@ -85,6 +94,7 @@
             this.listBoxPortfolioItems.Name = "listBoxPortfolioItems";
             this.listBoxPortfolioItems.Size = new System.Drawing.Size(129, 298);
             this.listBoxPortfolioItems.TabIndex = 0;
+            this.listBoxPortfolioItems.SelectedIndexChanged += new System.EventHandler(this.listBoxPortfolioItems_SelectedIndexChanged);
             // 
             // propertyGridPortfolio
             // 
@@ -93,6 +103,41 @@
             this.propertyGridPortfolio.Name = "propertyGridPortfolio";
             this.propertyGridPortfolio.Size = new System.Drawing.Size(129, 101);
             this.propertyGridPortfolio.TabIndex = 1;
+            // 
+            // tabControlPortfolioView
+            // 
+            this.tabControlPortfolioView.Controls.Add(this.tabPageOverview);
+            this.tabControlPortfolioView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPortfolioView.Location = new System.Drawing.Point(0, 0);
+            this.tabControlPortfolioView.Name = "tabControlPortfolioView";
+            this.tabControlPortfolioView.SelectedIndex = 0;
+            this.tabControlPortfolioView.Size = new System.Drawing.Size(480, 389);
+            this.tabControlPortfolioView.TabIndex = 1;
+            // 
+            // tabPageOverview
+            // 
+            this.tabPageOverview.Controls.Add(this.chartOverview);
+            this.tabPageOverview.Location = new System.Drawing.Point(4, 22);
+            this.tabPageOverview.Name = "tabPageOverview";
+            this.tabPageOverview.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageOverview.Size = new System.Drawing.Size(472, 363);
+            this.tabPageOverview.TabIndex = 0;
+            this.tabPageOverview.Text = "Overview";
+            this.tabPageOverview.ToolTipText = "The overview for this portfolio";
+            this.tabPageOverview.UseVisualStyleBackColor = true;
+            // 
+            // chartOverview
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartOverview.ChartAreas.Add(chartArea1);
+            this.chartOverview.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.chartOverview.Legends.Add(legend1);
+            this.chartOverview.Location = new System.Drawing.Point(3, 3);
+            this.chartOverview.Name = "chartOverview";
+            this.chartOverview.Size = new System.Drawing.Size(466, 357);
+            this.chartOverview.TabIndex = 0;
+            this.chartOverview.Text = "Overview";
             // 
             // statusStrip
             // 
@@ -134,6 +179,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tabControlPortfolioView.ResumeLayout(false);
+            this.tabPageOverview.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartOverview)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -150,6 +198,9 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.TabControl tabControlPortfolioView;
+        private System.Windows.Forms.TabPage tabPageOverview;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartOverview;
 
     }
 }

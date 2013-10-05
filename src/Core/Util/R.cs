@@ -13,6 +13,24 @@ namespace Rampage.Core.Util
     public static class R
     {
         /// <summary>
+        /// MarketDataSelectors
+        /// </summary>
+        public static class MarketDataSelectors
+        {
+            /// <summary>
+            /// RecentMonthSelector
+            /// </summary>
+            /// <param name="ticks">inbound ticks</param>
+            /// <returns>outbound enumeration</returns>
+            public static IEnumerable<MarketTick> RecentMonthSelector(IEnumerable<MarketTick> ticks)
+            {
+                var tmpExecDt = DateTime.Now;
+                var tmpLastMonth = new DateTime(tmpExecDt.Year, tmpExecDt.Month - 6, 1).AddDays(-1.0d);
+                return ticks.Where(t => t.Date > tmpLastMonth);
+            }
+        }
+
+        /// <summary>
         /// random
         /// </summary>
         private static readonly Random random = new Random((int)DateTime.Now.Ticks);
@@ -50,7 +68,7 @@ namespace Rampage.Core.Util
 
                 Save();
             }
-        } 
+        }
 
         #endregion
 
@@ -90,10 +108,10 @@ namespace Rampage.Core.Util
 
             for (var i = 1; i < table.Rows.Count; ++i)
                 retVal[i].Prev = retVal[i - 1];
-            
+
             for (var i = 0; i < table.Rows.Count - 1; ++i)
                 retVal[i].Next = retVal[i + 1];
-            
+
             return retVal.ToList();
         }
     }

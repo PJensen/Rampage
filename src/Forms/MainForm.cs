@@ -133,7 +133,6 @@ namespace Rampage.Forms
         /// <param name="e"></param>
         private void notifyIconMain_Click(object sender, System.EventArgs e)
         {
-
         }
 
         /// <summary>
@@ -171,15 +170,31 @@ namespace Rampage.Forms
             if (tmpReturn != DialogResult.OK)
                 return;
 
+            contextMenuStripMain.Items.Clear();
+
             foreach (var fileName in openFileDialogMain.SafeFileNames)
             {
                 try
                 {
                     var tmpFullPath = Path.Combine(Properties.Settings.Default.WorkingDirectory, fileName);
                     var tmpPortfolio = Portfolio.Load(tmpFullPath);
+                    var tmpPortfolioViewControl = new PortfolioViewControl(tmpPortfolio)
+                    {
+                        Dock = DockStyle.Fill,
+                        MarketDataSelector = R.MarketDataSelectors.RecentMonthSelector
+                    };
+
                     activeTabPage = new TabPage(tmpPortfolio.Name);
-                    activeTabPage.Controls.Add(new PortfolioViewControl(tmpPortfolio) { Dock = DockStyle.Fill });
+                    activeTabPage.Controls.Add(tmpPortfolioViewControl);
                     tabControlMain.TabPages.Add(activeTabPage);
+
+                    var tmpToolStripItem = new ToolStripMenuItem(tmpPortfolio.Name);
+                    foreach (var item in tmpPortfolio.Items)
+                    {
+                        var tmpToolStripPortfolioItem = new ToolStripMenuItem(item);
+                        tmpToolStripItem.DropDownItems.Add(tmpToolStripPortfolioItem);
+                    }
+                    contextMenuStripMain.Items.Add(tmpToolStripItem);
                     statusMain.Text = string.Format("Success! Loaded {0}", tmpPortfolio);
                 }
                 catch (SerializationException serializationException)
