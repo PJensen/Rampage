@@ -1,0 +1,155 @@
+﻿namespace Rampage.Controls
+{
+    partial class PortfolioViewControl
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.splitContainerMain = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.listBoxPortfolioItems = new System.Windows.Forms.ListBox();
+            this.propertyGridPortfolio = new System.Windows.Forms.PropertyGrid();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.portfolioDataRetrieverComponent = new Rampage.Components.PortfolioDataRetrieverComponent(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
+            this.splitContainerMain.Panel1.SuspendLayout();
+            this.splitContainerMain.Panel2.SuspendLayout();
+            this.splitContainerMain.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.statusStrip.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // splitContainerMain
+            // 
+            this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMain.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMain.Name = "splitContainerMain";
+            // 
+            // splitContainerMain.Panel1
+            // 
+            this.splitContainerMain.Panel1.Controls.Add(this.tableLayoutPanel1);
+            // 
+            // splitContainerMain.Panel2
+            // 
+            this.splitContainerMain.Panel2.Controls.Add(this.statusStrip);
+            this.splitContainerMain.Size = new System.Drawing.Size(619, 411);
+            this.splitContainerMain.SplitterDistance = 135;
+            this.splitContainerMain.TabIndex = 4;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.listBoxPortfolioItems, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.propertyGridPortfolio, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 74.1573F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.8427F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(135, 411);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // listBoxPortfolioItems
+            // 
+            this.listBoxPortfolioItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxPortfolioItems.FormattingEnabled = true;
+            this.listBoxPortfolioItems.Location = new System.Drawing.Point(3, 3);
+            this.listBoxPortfolioItems.Name = "listBoxPortfolioItems";
+            this.listBoxPortfolioItems.Size = new System.Drawing.Size(129, 298);
+            this.listBoxPortfolioItems.TabIndex = 0;
+            // 
+            // propertyGridPortfolio
+            // 
+            this.propertyGridPortfolio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGridPortfolio.Location = new System.Drawing.Point(3, 307);
+            this.propertyGridPortfolio.Name = "propertyGridPortfolio";
+            this.propertyGridPortfolio.Size = new System.Drawing.Size(129, 101);
+            this.propertyGridPortfolio.TabIndex = 1;
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar,
+            this.toolStripStatusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 389);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(480, 22);
+            this.statusStrip.TabIndex = 0;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // toolStripProgressBar
+            // 
+            this.toolStripProgressBar.Name = "toolStripProgressBar";
+            this.toolStripProgressBar.Size = new System.Drawing.Size(200, 16);
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(73, 17);
+            this.toolStripStatusLabel.Text = "Initializing ...";
+            // 
+            // portfolioDataRetrieverComponent
+            // 
+            this.portfolioDataRetrieverComponent.OnDataRetrieved += new System.EventHandler<Rampage.Components.PortfolioDataRetrieverComponent.PortfolioDataRetievedEventArgs>(this.portfolioDataRetrieverComponent_OnDataRetrieved);
+            // 
+            // PortfolioViewControl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.splitContainerMain);
+            this.Name = "PortfolioViewControl";
+            this.Size = new System.Drawing.Size(619, 411);
+            this.Load += new System.EventHandler(this.PortfolioViewControl_Load);
+            this.splitContainerMain.Panel1.ResumeLayout(false);
+            this.splitContainerMain.Panel2.ResumeLayout(false);
+            this.splitContainerMain.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
+            this.splitContainerMain.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.SplitContainer splitContainerMain;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ListBox listBoxPortfolioItems;
+        private System.Windows.Forms.PropertyGrid propertyGridPortfolio;
+        private Components.PortfolioDataRetrieverComponent portfolioDataRetrieverComponent;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+
+    }
+}
