@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rampage", "src\Rampage.csproj", "{01CB1DAD-EB48-44E5-9B26-FCF3024CDAF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rampage", "..\..\src\Rampage.csproj", "{01CB1DAD-EB48-44E5-9B26-FCF3024CDAF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

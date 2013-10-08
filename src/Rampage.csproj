@@ -65,6 +65,8 @@
     <Compile Include="Controls\SecurityViewControl.Designer.cs">
       <DependentUpon>SecurityViewControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\DataRetriever\YahooFlds.cs" />
+    <Compile Include="Core\DataRetriever\YahooRealtimeRetriever.cs" />
     <Compile Include="Core\Delegates\MarketDataSelector.cs" />
     <Compile Include="Core\Interfaces\IMarketDataRetriever.cs" />
     <Compile Include="Core\Interfaces\ISave.cs" />
@@ -76,7 +78,7 @@
     <Compile Include="Core\Util\CSVWriter.cs" />
     <Compile Include="Core\Util\Persisted.cs" />
     <Compile Include="Core\Util\R.cs" />
-    <Compile Include="Core\YahooDataRetriever.cs" />
+    <Compile Include="Core\DataRetriever\YahooHistoricalDataRetriever.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

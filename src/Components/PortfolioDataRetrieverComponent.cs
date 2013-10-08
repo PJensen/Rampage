@@ -45,6 +45,9 @@ namespace Rampage.Components
             /// PortfolioDataRetievedEventArgs
             /// </summary>
             /// <param name="portfolio"></param>
+            /// <param name="security"> </param>
+            /// <param name="message"> </param>
+            /// <param name="fail"> </param>
             public PortfolioDataRetievedEventArgs(Portfolio portfolio, string security, string message, bool fail = false)
             {
                 Security = security;
@@ -98,6 +101,7 @@ namespace Rampage.Components
         /// <summary>
         /// Get
         /// </summary>
+        /// <param name="retriever"> </param>
         /// <param name="portfolio"></param>
         /// <returns></returns>
         public void Get(IMarketDataRetriever retriever, Portfolio portfolio)

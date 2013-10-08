@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Rampage.Core.DataRetriever;
 using Rampage.Core.Objects;
 using Rampage.Core.Util;
 using Rampage.Core;
@@ -58,7 +59,7 @@ namespace Rampage.Controls
         public PortfolioViewControl(Portfolio portfolio, IMarketDataRetriever retriever = null)
         {
             _portfolio = portfolio;
-            _retriever = retriever ?? new YahooDataRetriever();
+            _retriever = retriever ?? new YahooHistoricalDataRetriever();
 
             InitializeComponent();
         }
@@ -103,16 +104,15 @@ namespace Rampage.Controls
                     ChartType = SeriesChartType.Line,
                     XValueType = ChartValueType.Date,
                     YAxisType = AxisType.Primary,
-                    XAxisType = AxisType.Primary,
+                    XAxisType = AxisType.Secondary,
                     YValueType = ChartValueType.Auto,
-
                 };
 
                 var tmpWorkingData = MarketDataSelector == null ? e.MarketData : MarketDataSelector(e.MarketData);
 
                 foreach (var marketTick in tmpWorkingData)
                 {
-                    tmpSeries.Points.AddXY(marketTick.Date, marketTick.Close);
+                    tmpSeries.Points.AddXY(marketTick.Date, marketTick.PercentChangeTotal);
                 }
 
                 _chartSeries.Add(tmpSeries);
@@ -131,17 +131,28 @@ namespace Rampage.Controls
         /// <param name="e"></param>
         private void listBoxPortfolioItems_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var data = _retrievalData.FirstOrDefault(d => d.Security.Equals(listBoxPortfolioItems.SelectedItem));
-
-            if (data == null)
-                return;
-
-            if (tabControlPortfolioView.TabPages.ContainsKey(data.Security))
-                return;
-
-            var tmpTabPage = new TabPage(data.Security);
-            tmpTabPage.Controls.Add(new SecurityViewControl(data) { Dock = DockStyle.Fill });
-            tabControlPortfolioView.TabPages.Add(tmpTabPage);
+            //            var data = _retrievalData.FirstOrDefault(d => d.Security.Equals(listBoxPortfolioItems.SelectedItem));
+            //
+            //            if (data == null)
+            //                return;
+            //
+            //            if (tabControlPortfolioView.TabPages.ContainsKey(data.Security))
+            //                return;
+            //
+            //            var tmpTabPage = new TabPage(data.Security);
+            //            tmpTabPage.Controls.Add(new SecurityViewControl(data) { Dock = DockStyle.Fill });
+            //            tabControlPortfolioView.TabPages.Add(tmpTabPage);
         }
+
+        private void chartOverview_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+//        private void chartOverview_DoubleClick(object sender, EventArgs e)
+//        {
+//            chartOverview.Region = new Rectangle(chartOverview.Bounds.X + 1, chartOverview.Bounds.Y + 1,
+//                                                 chartOverview.Bounds.Width - 1, chartOverview.Bounds.Height - 1);
+//        }
     }
 }

@@ -5,12 +5,12 @@ using System.Net;
 using Rampage.Core.Interfaces;
 using Rampage.Core.Util;
 
-namespace Rampage.Core
+namespace Rampage.Core.DataRetriever
 {
     /// <summary>
     /// YahooDataRetriever
     /// </summary>
-    public class YahooDataRetriever : IMarketDataRetriever
+    public class YahooHistoricalDataRetriever : IMarketDataRetriever
     {
         /// <summary>
         /// Retrieve

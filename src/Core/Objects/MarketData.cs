@@ -12,17 +12,6 @@ namespace Rampage.Core
     public class MarketTick
     {
         /// <summary>
-        /// IsValid
-        /// </summary>
-        public bool IsValid
-        {
-            get
-            {
-                return Date != null;
-            }
-        }
-
-        /// <summary>
         /// HasNext
         /// </summary>
         public bool HasNext { get { return Next != null; } }
@@ -41,6 +30,16 @@ namespace Rampage.Core
         /// The next market tick
         /// </summary>
         public MarketTick Prev { get; set; }
+
+        /// <summary>
+        /// First
+        /// </summary>
+        public MarketTick First { get; set; }
+
+        /// <summary>
+        /// Last
+        /// </summary>
+        public MarketTick Last { get; set; }
 
         /// <summary>
         /// ToString
@@ -85,6 +84,26 @@ namespace Rampage.Core
         /// Symbol
         /// </summary>
         public string Symbol { get; set; }
+
+        /// <summary>
+        /// PercentChange
+        /// </summary>
+        public double PercentChangeTotal
+        {
+            get
+            {
+                var current = Close;
+
+                if (!HasPrev)
+                {
+                    return 0;
+                }
+
+                var firstClose = First.Close;
+
+                return ((current - firstClose) / firstClose) * 100.0d;
+            }
+        }
 
         /// <summary>
         /// Technicals

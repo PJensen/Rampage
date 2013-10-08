@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Rampage.Core.Interfaces;
 using Rampage.Core.Util;
 using System.Diagnostics;
-using System.Xml.Serialization;
 
 namespace Rampage.Core.Objects
 {

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Forms;
-using Rampage.Core.Objects;
 using Rampage.Forms;
 
 namespace Rampage

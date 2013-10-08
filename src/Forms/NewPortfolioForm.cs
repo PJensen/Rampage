@@ -1,11 +1,7 @@
 ﻿using Rampage.Core.Objects;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Rampage.Forms
@@ -40,7 +36,7 @@ namespace Rampage.Forms
         /// <param name="e"></param>
         private void saveFileDialogPortfolio_FileOk(object sender, CancelEventArgs e)
         {
-            Portfolio newPortfolio = new Portfolio(textBoxName.Text,
+            var newPortfolio = new Portfolio(textBoxName.Text,
                 listBoxItems.Items.Cast<string>().ToList());
 
             if (newPortfolio.Save(saveFileDialogPortfolio.FileName))
@@ -56,7 +52,7 @@ namespace Rampage.Forms
         /// <param name="e">event args</param>
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            var tmpReturn = saveFileDialogPortfolio.ShowDialog(this);
+            saveFileDialogPortfolio.ShowDialog(this);
         }
 
         /// <summary>

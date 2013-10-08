@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Rampage.Core.Delegates
 {
@@ -9,7 +6,6 @@ namespace Rampage.Core.Delegates
     /// MarketDataSelector
     /// </summary>
     /// <param name="marketTicks">The market ticks to select from</param>
-    /// <param name="predicate">The predicate to use for selecting</param>
     /// <returns>A list of market data ticks</returns>
     public delegate IEnumerable<MarketTick> MarketDataSelector(IEnumerable<MarketTick> marketTicks);
 }

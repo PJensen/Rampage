@@ -203,7 +203,6 @@
 
         #endregion
 
-        private System.Windows.Forms.SaveFileDialog saveFileDialogPortfolio;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TextBox textBoxDescription;
@@ -217,5 +216,6 @@
         private System.Windows.Forms.TextBox textBoxItemName;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripRemove;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        internal System.Windows.Forms.SaveFileDialog saveFileDialogPortfolio;
     }
 }

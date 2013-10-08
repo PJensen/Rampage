@@ -138,6 +138,7 @@
             this.chartOverview.Size = new System.Drawing.Size(466, 357);
             this.chartOverview.TabIndex = 0;
             this.chartOverview.Text = "Overview";
+            
             // 
             // statusStrip
             // 

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Windows.Forms;
 using Rampage.Controls;
@@ -156,6 +157,7 @@ namespace Rampage.Forms
 
             frmNewPortfolio.FormClosed += (a, b) => { };
             frmNewPortfolio.Show(this);
+            frmNewPortfolio.Closed += (o, args) => OpenPortfolio(frmNewPortfolio.saveFileDialogPortfolio.FileName);
         }
 
         /// <summary>
@@ -176,26 +178,7 @@ namespace Rampage.Forms
             {
                 try
                 {
-                    var tmpFullPath = Path.Combine(Properties.Settings.Default.WorkingDirectory, fileName);
-                    var tmpPortfolio = Portfolio.Load(tmpFullPath);
-                    var tmpPortfolioViewControl = new PortfolioViewControl(tmpPortfolio)
-                    {
-                        Dock = DockStyle.Fill,
-                        MarketDataSelector = R.MarketDataSelectors.RecentMonthSelector
-                    };
-
-                    activeTabPage = new TabPage(tmpPortfolio.Name);
-                    activeTabPage.Controls.Add(tmpPortfolioViewControl);
-                    tabControlMain.TabPages.Add(activeTabPage);
-
-                    var tmpToolStripItem = new ToolStripMenuItem(tmpPortfolio.Name);
-                    foreach (var item in tmpPortfolio.Items)
-                    {
-                        var tmpToolStripPortfolioItem = new ToolStripMenuItem(item);
-                        tmpToolStripItem.DropDownItems.Add(tmpToolStripPortfolioItem);
-                    }
-                    contextMenuStripMain.Items.Add(tmpToolStripItem);
-                    statusMain.Text = string.Format("Success! Loaded {0}", tmpPortfolio);
+                    OpenPortfolio(fileName);
                 }
                 catch (SerializationException serializationException)
                 {
@@ -208,6 +191,35 @@ namespace Rampage.Forms
                     Debug.Write(ioException.Message);
                 }
             }
+        }
+
+        /// <summary>
+        /// OpenPortfolio
+        /// </summary>
+        /// <param name="fileName"></param>
+        private void OpenPortfolio(string fileName)
+        {
+            var tmpFullPath = Path.Combine(Properties.Settings.Default.WorkingDirectory, fileName);
+            var tmpPortfolio = Portfolio.Load(tmpFullPath);
+            var tmpPortfolioViewControl = new PortfolioViewControl(tmpPortfolio)
+                                              {
+                                                  Dock = DockStyle.Fill,
+                                                  MarketDataSelector = R.MarketDataSelectors.RecentMonthSelector
+                                              };
+
+            activeTabPage = new TabPage(tmpPortfolio.Name);
+            activeTabPage.Controls.Add(tmpPortfolioViewControl);
+            tabControlMain.TabPages.Add(activeTabPage);
+
+            var tmpToolStripItem = new ToolStripMenuItem(tmpPortfolio.Name);
+            foreach (var item in tmpPortfolio.Items)
+            {
+                var tmpToolStripPortfolioItem = new ToolStripMenuItem(item);
+
+                tmpToolStripItem.DropDownItems.Add(tmpToolStripPortfolioItem);
+            }
+            contextMenuStripMain.Items.Add(tmpToolStripItem);
+            statusMain.Text = string.Format("Success! Loaded {0}", tmpPortfolio);
         }
 
         /// <summary>
@@ -248,8 +260,10 @@ namespace Rampage.Forms
 
             var ctrl = activeTabPage.Controls[0] as PortfolioViewControl;
 
-            if (ctrl.Portfolio == null)
+            if (ctrl == null || (ctrl.Portfolio == null))
+            {
                 return;
+            }
 
             if (ctrl.Portfolio.Save())
             {

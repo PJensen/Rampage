@@ -24,9 +24,7 @@ namespace Rampage.Core.Util
             /// <returns>outbound enumeration</returns>
             public static IEnumerable<MarketTick> RecentMonthSelector(IEnumerable<MarketTick> ticks)
             {
-                var tmpExecDt = DateTime.Now;
-                var tmpLastMonth = new DateTime(tmpExecDt.Year, tmpExecDt.Month - 6, 1).AddDays(-1.0d);
-                return ticks.Where(t => t.Date > tmpLastMonth);
+                return ticks;
             }
         }
 
@@ -83,7 +81,7 @@ namespace Rampage.Core.Util
         /// <summary>
         /// Convert
         /// </summary>
-        /// <param name="Symbol"> </param>
+        /// <param name="symbol"> </param>
         /// <param name="table"></param>
         /// <returns></returns>
         public static List<MarketTick> Convert(string symbol, DataTable table)
@@ -111,6 +109,12 @@ namespace Rampage.Core.Util
 
             for (var i = 0; i < table.Rows.Count - 1; ++i)
                 retVal[i].Next = retVal[i + 1];
+
+            for (var i = 0; i < table.Rows.Count; ++i)
+            {
+                retVal[i].First = retVal[0];
+                retVal[i].Last = retVal[table.Rows.Count - 1];
+            }
 
             return retVal.ToList();
         }
